@@ -4,17 +4,12 @@
         id        = "com.phonegap.example"
         versionCode="10" 
         version   = "1.1.5">
-
-    <!-- versionCode is optional and Android only -->
-
     <name>PhoneGap App</name>
-
     <description>
         Just another PhoneGap App
     </description>
-
     <author href="http://www.google.com" email="blackbourna@gmail.com">
         Andrew Blackbourn
     </author>
-
+	<gap:plugin name="org.apache.cordova.core.vibration" />
 </widget>

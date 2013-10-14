@@ -3,7 +3,10 @@
 	<title>My PhoneGap App</title>
 	<script type="text/javascript" src="cordova-2.9.0.js"></script>
 	<script>
-		var doSomething = function() { alert('Hey!'); }
+		var doSomething = function() {
+			alert('Hey!'); 
+			navigator.notification.vibrate(2000);
+		}
 	</script>
 </head>
 
