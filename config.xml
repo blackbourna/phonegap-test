@@ -12,5 +12,7 @@
     <author href="http://www.google.com" email="blackbourna@gmail.com">
         Andrew Blackbourn
     </author>
-	<gap:plugin name="org.apache.cordova.core.vibration" />
+    <preference name="phonegap-version" value="3.0.0" />
+    <gap:plugin name="org.apache.cordova.core.vibration" />
+	
 </widget>
