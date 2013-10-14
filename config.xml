@@ -14,5 +14,8 @@
     </author>
     <preference name="phonegap-version" value="3.0.0" />
     <gap:plugin name="org.apache.cordova.core.vibration" />
-	
+	<gap:plugin name="org.apache.cordova.core.device-motion" />
+	<gap:plugin name="org.apache.cordova.core.dialogs" />
+	<gap:plugin name="org.apache.cordova.core.battery-status" />
+	<gap:plugin name="com.phonegap.plugins.barcodescanner" />
 </widget>
