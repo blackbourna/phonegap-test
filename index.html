@@ -9,10 +9,10 @@
 	<script src="barcodescanner.js"></script>
 	<script>
 		var = stopAccelerometer = false;
-		var onDeviceReady = function() {
+		function onDeviceReady() {
 			alert('Hey!'); 
 			// vibrate
-			//navigator.notification.vibrate(2000);
+			navigator.notification.vibrate(2000);
 			
 			// beep
 			navigator.notification.beep(2);
@@ -41,7 +41,7 @@
 			// start polling accelerometer
 			setTimeout(
 				function() { startWatch(); }
-			, 5000)
+			, 5000);
 		}
 		// Start watching the acceleration
 		//
@@ -73,6 +73,7 @@
 			}
 		}
 		var doSomething = function() {
+			console.log('this happened.');
 			document.addEventListener("deviceready", onDeviceReady, false);
 		}
 	</script>
