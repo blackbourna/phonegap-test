@@ -1,81 +1,77 @@
 <html>
 <head>
 	<title>My PhoneGap App</title>
-	<script src="phonegap.js"></script>
-	<script src="vibration.js"></script>
-	<script src="device-motion.js"></script>
-	<script src="dialogs.js"></script>
-	<script src="battery-status.js"></script>
-	<script src="barcodescanner.js"></script>
 	<script>
 		alert('test 123');
-		var = stopAccelerometer = false;
+		var stopAccelerometer = false;
+
 		function onDeviceReady() {
-			alert('Hey!'); 
-			// vibrate
-			navigator.notification.vibrate(2000);
-			
-			// beep
-			navigator.notification.beep(2);
-			
-			// barcode scan
-			cordova.plugins.barcodeScanner.scan(
-			  function (result) {
-				  alert("We got a barcode\n" +
-						"Result: " + result.text + "\n" +
-						"Format: " + result.format + "\n" +
-						"Cancelled: " + result.cancelled);
-			  }, 
-			  function (error) {
-				  alert("Scanning failed: " + error);
-			  }
-			);
-			
-			// get battery status
-			window.addEventListener("batterystatus", onBatteryStatus, false);
+		    alert('Hey!');
+		    // vibrate
+		    navigator.notification.vibrate(2000);
 
-			function onBatteryStatus(info) {
-				// Handle the online event
-				console.log("Level: " + info.level + " isPlugged: " + info.isPlugged); 
-			}
-			
-			// start polling accelerometer
-			setTimeout(
-				function() { startWatch(); }
-			, 5000);
+		    // beep
+		    navigator.notification.beep(2);
+
+		    // barcode scan
+		    cordova.plugins.barcodeScanner.scan(
+		        function (result) {
+		            alert("We got a barcode\n" +
+		                "Result: " + result.text + "\n" +
+		                "Format: " + result.format + "\n" +
+		                "Cancelled: " + result.cancelled);
+		        },
+		        function (error) {
+		            alert("Scanning failed: " + error);
+		        }
+		    );
+
+		    // get battery status
+
+		    function onBatteryStatus(info) {
+		        // Handle the online event
+		        console.log("Level: " + info.level + " isPlugged: " + info.isPlugged);
+		    }
+		    window.addEventListener("batterystatus", onBatteryStatus, false);
+
+		    // start polling accelerometer
+		    setTimeout(
+		        function () {
+		            startWatch();
+		        }, 5000);
 		}
-		// Start watching the acceleration
-		//
+		 // Start watching the acceleration
 		function startWatch() {
-			watchID = navigator.accelerometer.watchAcceleration(
-			//success handler
-			function(acceleration) {
-				if (!stopAccelerometer) {
-					console.log(acceleration);
-				}
-			}, 
-			// error handler
-			function () {
-				// do nothing
-			},
-			// options
-			{ 
-				// Update acceleration every 3 seconds
-				frequency: 3000 
-			});
+		    watchID = navigator.accelerometer.watchAcceleration(
+		        //success handler
+		        function (acceleration) {
+		            if (!stopAccelerometer) {
+		                console.log(acceleration);
+		            }
+		        },
+		        // error handler
+		        function () {
+		            // do nothing
+		        },
+		        // options
+		        {
+		            // Update acceleration every 3 seconds
+		            frequency: 3000
+		        });
 		}
 
-		// Stop watching the acceleration
-		//
+		 // Stop watching the acceleration
+		 //
 		function stopWatch() {
-			if (watchID) {
-				navigator.accelerometer.clearWatch(watchID);
-				watchID = null;
-			}
+		    if (watchID) {
+		        navigator.accelerometer.clearWatch(watchID);
+		        watchID = null;
+		    }
 		}
+
 		function doSomething() {
-			console.log('this happened.');
-			document.addEventListener("deviceready", onDeviceReady, false);
+		    console.log('this happened.');
+		    document.addEventListener("deviceready", onDeviceReady, false);
 		}
 	</script>
 </head>
