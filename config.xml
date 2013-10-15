@@ -12,17 +12,9 @@
     <author href="http://www.google.com" email="blackbourna@gmail.com">
         Andrew Blackbourn
     </author>
-	<feature name="Device" value="org.apache.cordova.core.Device"/>
-	
-	<feature name="Battery" value="org.apache.cordova.core.BatteryListener" />
-	<feature name="Accelerometer" value="org.apache.cordova.core.AccelListener" />
-	<feature name="Notification" value="org.apache.cordova.core.Notification" />
-	<feature name="Vibration" value="org.apache.cordova.core.Vibration" />
-	
-    <preference name="phonegap-version" value="3.0.0" />
+    <preference name="phonegap-version" value="2.9.0" />
     <gap:plugin name="org.apache.cordova.core.vibration" />
 	<gap:plugin name="org.apache.cordova.core.device-motion" />
 	<gap:plugin name="org.apache.cordova.core.dialogs" />
 	<gap:plugin name="org.apache.cordova.core.battery-status" />
-	<gap:plugin name="com.phonegap.plugins.barcodescanner" version="1.0.2" />
 </widget>
