@@ -64,7 +64,7 @@
 			navigator.camera.getPicture( function(data) {
 				alert('took a photo!');
 				var image = document.getElementById("photo");
-				image.src = "data:image/jpeg;base64," + data;
+				image.src = data;
 			}, function(e) { alert(e); }, 
 			{ quality: 50 } );
 		}
