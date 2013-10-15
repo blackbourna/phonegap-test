@@ -60,13 +60,13 @@
 
 		// take a photo
 		function takePhoto() {
-			$('button').click(function() {
-				navigator.camera.getPicture( function() {
-					var image = $('img');
-					image.src = "data:image/jpeg;base64," + imageData;
-				}, function(e) { alert(e); }, 
-				{ quality: 50 } );
-			});
+			alert('Attempt to take photo');
+			navigator.camera.getPicture( function() {
+				alert('took a photo!');
+				var image = document.getElementById("photo");
+				image.src = "data:image/jpeg;base64," + imageData;
+			}, function(e) { alert(e); }, 
+			{ quality: 50 } );
 		}
 		
 		function go() {
@@ -77,7 +77,7 @@
 
 <body onload="go()">
 <button onclick="stopWatch()">Toggle Acceleration Monitoring</button>
-<button onclick="takePhoto">Take Photo</button>
-<img />
+<button onclick="takePhoto()">Take Photo</button>
+<img id="photo" src="" />
 </body>
 </html>
