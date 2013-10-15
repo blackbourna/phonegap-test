@@ -61,10 +61,10 @@
 		// take a photo
 		function takePhoto() {
 			alert('Attempt to take photo');
-			navigator.camera.getPicture( function() {
+			navigator.camera.getPicture( function(data) {
 				alert('took a photo!');
 				var image = document.getElementById("photo");
-				image.src = "data:image/jpeg;base64," + imageData;
+				image.src = "data:image/jpeg;base64," + data;
 			}, function(e) { alert(e); }, 
 			{ quality: 50 } );
 		}
