@@ -66,35 +66,16 @@
 			{ quality: 50 } );
 		}
 		
-		function spinPhoto() {
-			var x = 0;
-			while (x < 360) {
-				setTimeout(function() {
-					rotatePhoto(x);
-				},
-					5000/x
-				);
-			}
-		}
-		
-		function rotatePhoto(angle) {
-			// caching the object for performance reasons
-			var $elem = $('img');
-
-			// we use a pseudo object for the animation
-			// (starts from `0` to `angle`), you can name it as you want
-			$({deg: 0}).animate({deg: angle}, {
-				duration: 2000,
-				step: function(now) {
-					// in the step-callback (that is fired each step of the animation),
-					// you can use the `now` paramter which contains the current
-					// animation-position (`0` up to `angle`)
-					$elem.css({
-						transform: 'rotate(' + now + 'deg)'
+		function rotatePhoto(d){
+			$({deg: 0}).animate({deg: d}, {
+				step: function(now, fx){
+					$("img").css({
+						 transform: "rotate(" + now + "deg)"
 					});
 				}
 			});
 		}
+
 		
 		function go() {
 		    document.addEventListener("deviceready", onDeviceReady, false);
@@ -108,7 +89,7 @@
 <body onload="go()">
 <button onclick="stopWatch()">Toggle Acceleration Monitoring</button>
 <button onclick="takePhoto()">Take Photo</button>
-<button onclick="spinPhoto()">Spin Photo</button>
+<button onclick="rotatePhoto(360)">Spin Photo</button>
 <img id="photo" src="" />
 </body>
 </html>
