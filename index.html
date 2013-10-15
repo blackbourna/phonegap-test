@@ -34,7 +34,7 @@
 		    watchID = navigator.accelerometer.watchAcceleration(
 		        //success handler
 		        function (acceleration) {
-					console.log(acceleration);
+					alert(acceleration);
 		        },
 		        // error handler
 		        function () {
@@ -53,16 +53,18 @@
 		    if (watchID) {
 		        navigator.accelerometer.clearWatch(watchID);
 		        watchID = null;
-		    }
+		    } else {
+				startWatch();
+			}
 		}
 
 		// take a photo
 		function takePhoto() {
 			$('button').click(function() {
 				navigator.camera.getPicture( function() {
-					image = document.getElementById('myImage');
+					var image = $('img');
 					image.src = "data:image/jpeg;base64," + imageData;
-				}, function() {}, 
+				}, function(e) { alert(e); }, 
 				{ quality: 50 } );
 			});
 		}
@@ -74,7 +76,7 @@
 </head>
 
 <body onload="go()">
-<button onclick="stopWatch()">Stop Acceleration</button>
+<button onclick="stopWatch()">Toggle Acceleration Monitoring</button>
 <button onclick="takePhoto">Take Photo</button>
 <img />
 </body>
