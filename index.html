@@ -6,9 +6,7 @@
 	<script src="device-motion.js"></script>
 	<script src="dialogs.js"></script>
 	<script src="battery-status.js"></script>
-</head>
-
-<body onload="doSomething()">
+	<script src="jquery.js"></script>
 	<script>
 		alert('Alert from "alert" dialog');
 		var stopAccelerometer = false;
@@ -38,7 +36,7 @@
 		        //success handler
 		        function (acceleration) {
 					alert("Acceleration: " + acceleration.x);
-					console.log(acceleration);}
+					console.log(acceleration);
 		        },
 		        // error handler
 		        function () {
@@ -64,5 +62,8 @@
 		    document.addEventListener("deviceready", onDeviceReady, false);
 		}
 	</script>
+</head>
+
+<body onload="doSomething()">
 </body>
 </html>
