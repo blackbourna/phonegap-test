@@ -27,14 +27,13 @@
 		    window.addEventListener("batterystatus", onBatteryStatus, function(e) { alert(e) });
 
 		    // start polling accelerometer
-			startWatch();
+			//startWatch();
 		}
 		 // Start watching the acceleration
 		function startWatch() {
 		    watchID = navigator.accelerometer.watchAcceleration(
 		        //success handler
 		        function (acceleration) {
-					alert("Acceleration: " + acceleration.x);
 					console.log(acceleration);
 		        },
 		        // error handler
@@ -57,12 +56,26 @@
 		    }
 		}
 
-		function doSomething() {
+		// take a photo
+		function takePhoto() {
+			$('button').click(function() {
+				navigator.camera.getPicture( function() {
+					image = document.getElementById('myImage');
+					image.src = "data:image/jpeg;base64," + imageData;
+				}, function() {}, 
+				{ quality: 50 } );
+			});
+		}
+		
+		function go() {
 		    document.addEventListener("deviceready", onDeviceReady, false);
 		}
 	</script>
 </head>
 
-<body onload="doSomething()">
+<body onload="go()">
+<button onclick="stopWatch()">Stop Acceleration</button>
+<button onclick="takePhoto">Take Photo</button>
+<img />
 </body>
 </html>
