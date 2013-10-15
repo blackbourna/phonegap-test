@@ -24,7 +24,7 @@
 		        // Handle the online event
 		        alert("Battery Status - Level: " + info.level + " isPlugged: " + info.isPlugged);
 		    }
-		    window.addEventListener("batterystatus", onBatteryStatus, function(e) { alert(e) });
+		    window.addEventListener("batterystatus", onBatteryStatus, function(e) { alert(e); });
 
 		    // start polling accelerometer
 			//startWatch();
@@ -75,7 +75,7 @@
 				setTimeout(function() {
 					rotatePhoto(x);
 				},
-					5000/x;
+					5000/x
 				);
 			}
 		}
