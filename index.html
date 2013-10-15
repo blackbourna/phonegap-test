@@ -6,7 +6,9 @@
 	<script src="device-motion.js"></script>
 	<script src="dialogs.js"></script>
 	<script src="battery-status.js"></script>
-	<script src="barcodescanner.js"></script>
+</head>
+
+<body onload="doSomething()">
 	<script>
 		alert('Alert from "alert" dialog');
 		var stopAccelerometer = false;
@@ -19,41 +21,24 @@
 		    // beep
 		    navigator.notification.beep(2);
 
-		    // barcode scan
-		    cordova.plugins.barcodeScanner.scan(
-		        function (result) {
-		            alert("We got a barcode\n" +
-		                "Result: " + result.text + "\n" +
-		                "Format: " + result.format + "\n" +
-		                "Cancelled: " + result.cancelled);
-		        },
-		        function (error) {
-		            alert("Scanning failed: " + error);
-		        }
-		    );
-
 		    // get battery status
 
 		    function onBatteryStatus(info) {
 		        // Handle the online event
 		        alert("Battery Status - Level: " + info.level + " isPlugged: " + info.isPlugged);
 		    }
-		    window.addEventListener("batterystatus", onBatteryStatus, false);
+		    window.addEventListener("batterystatus", onBatteryStatus, function(e) { alert(e) });
 
 		    // start polling accelerometer
-		    setTimeout(
-		        function () {
-		            startWatch();
-		        }, 5000);
+			startWatch();
 		}
 		 // Start watching the acceleration
 		function startWatch() {
 		    watchID = navigator.accelerometer.watchAcceleration(
 		        //success handler
 		        function (acceleration) {
-		            if (!stopAccelerometer) {
-		                console.log(acceleration);
-		            }
+					alert("Acceleration: " + acceleration.x);
+					console.log(acceleration);}
 		        },
 		        // error handler
 		        function () {
@@ -79,8 +64,5 @@
 		    document.addEventListener("deviceready", onDeviceReady, false);
 		}
 	</script>
-</head>
-
-<body onload="doSomething()">
 </body>
 </html>

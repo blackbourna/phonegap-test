@@ -22,5 +22,5 @@
 	<gap:plugin name="org.apache.cordova.core.device-motion" />
 	<gap:plugin name="org.apache.cordova.core.dialogs" />
 	<gap:plugin name="org.apache.cordova.core.battery-status" />
-	<gap:plugin name="BarcodeScanner" value="com.phonegap.plugins.barcodescanner" />
+	<gap:plugin name="com.phonegap.plugins.barcodescanner" version="1.0.2" />
 </widget>
