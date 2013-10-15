@@ -13,22 +13,19 @@
 
 		function onDeviceReady() {
 		    // vibrate
-		    navigator.notification.vibrate(2000);
+		    //navigator.notification.vibrate(2000);
 
 		    // beep
-		    navigator.notification.beep(2);
+		    //navigator.notification.beep(2);
 
 		    // get battery status
-
-		    function onBatteryStatus(info) {
-		        // Handle the online event
-		        alert("Battery Status - Level: " + info.level + " isPlugged: " + info.isPlugged);
-		    }
-		    window.addEventListener("batterystatus", onBatteryStatus, function(e) { alert(e); });
-
-		    // start polling accelerometer
-			//startWatch();
+			
+			// check battery
+		    //window.addEventListener("batterystatus", function() {
+			//	alert("Battery Status - Level: " + info.level + " isPlugged: " + info.isPlugged);
+			//}, function(e) { alert(e); });
 		}
+		
 		 // Start watching the acceleration
 		function startWatch() {
 		    watchID = navigator.accelerometer.watchAcceleration(
