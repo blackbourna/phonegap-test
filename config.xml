@@ -12,10 +12,15 @@
     <author href="http://www.google.com" email="blackbourna@gmail.com">
         Andrew Blackbourn
     </author>
+	
+	<feature name="http://api.phonegap.com/1.0/battery"/>
+	<feature name="http://api.phonegap.com/1.0/camera"/>
+	<feature name="http://api.phonegap.com/1.0/notification"/>
+	
     <preference name="phonegap-version" value="3.0.0" />
     <gap:plugin name="org.apache.cordova.core.vibration" />
 	<gap:plugin name="org.apache.cordova.core.device-motion" />
 	<gap:plugin name="org.apache.cordova.core.dialogs" />
 	<gap:plugin name="org.apache.cordova.core.battery-status" />
-	<gap:plugin name="com.phonegap.plugins.barcodescanner" />
+	<gap:plugin name="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
 </widget>

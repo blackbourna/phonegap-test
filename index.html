@@ -8,7 +8,7 @@
 	<script src="battery-status.js"></script>
 	<script src="barcodescanner.js"></script>
 	<script>
-		alert('test 123');
+		alert('Alert from "alert" dialog');
 		var stopAccelerometer = false;
 
 		function onDeviceReady() {
@@ -36,7 +36,7 @@
 
 		    function onBatteryStatus(info) {
 		        // Handle the online event
-		        console.log("Level: " + info.level + " isPlugged: " + info.isPlugged);
+		        alert("Battery Status - Level: " + info.level + " isPlugged: " + info.isPlugged);
 		    }
 		    window.addEventListener("batterystatus", onBatteryStatus, false);
 
@@ -76,7 +76,6 @@
 		}
 
 		function doSomething() {
-		    console.log('this happened.');
 		    document.addEventListener("deviceready", onDeviceReady, false);
 		}
 	</script>
