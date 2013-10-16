@@ -2,43 +2,40 @@
 <head>
 	<title>My PhoneGap App</title>
 	<script src="phonegap.js"></script>
+	<script src="jquery.js"></script>
 	<script>
-		function onDeviceReady() {
-			startWatch();
+		// take a photo
+		function takePhoto() {
+			alert('Attempt to take photo');
+			navigator.camera.getPicture( function(data) {
+				alert('took a photo!');
+				var image = document.getElementById("photo");
+				image.src = data;
+			}, function(e) { alert(e); }, 
+			{ quality: 50 } );
 		}
-		// Start watching the acceleration
-		function startWatch() {
-			watchID = navigator.accelerometer.watchAcceleration(
-			//success handler
-			function (acceleration) {
-				alert("x: "+ acceleration.x + " y:" + acceleration.y);
-			},
-			// error handler
-			function () {
-				// do nothing
-			},
-			// options
-			{
-				// Update acceleration every 3 seconds
-				frequency: 3000
+		function rotatePhoto(d){
+			$({deg: 0}).animate({deg: d}, {
+				duration: 5000,
+				step: function(now, fx){
+					$("img").css({
+						 transform: "rotate(" + now + "deg)"
+					});
+				}
 			});
 		}
-		// Stop watching the acceleration
-		//
-		function stopWatch() {
-			if (watchID) {
-				navigator.accelerometer.clearWatch(watchID);
-				watchID = null;
-		    	} else {
-				startWatch();
-			}
-		}
 		function go() {
-		    document.addEventListener("deviceready", onDeviceReady, false);
+			document.addEventListener("deviceready", onDeviceReady, false);
 		}
 	</script>
+	<style>
+		img { width: 100%;}
+	</style>
 </head>
 <body onload="go()">
-<button onclick="stopWatch()">Toggle Acceleration Monitoring</button>
+	<button onclick="takePhoto()">Take Photo</button>
+	<button onclick="rotatePhoto(360)">Spin Photo</button>
+	<img id="photo" src="" />
 </body>
 </html>
+
