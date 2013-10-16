@@ -2,81 +2,13 @@
 <head>
 	<title>My PhoneGap App</title>
 	<script src="phonegap.js"></script>
-	<script src="vibration.js"></script>
-	<script src="device-motion.js"></script>
-	<script src="dialogs.js"></script>
-	<script src="battery-status.js"></script>
-	<script src="jquery.js"></script>
 	<script>
-		alert('Alert from "alert" dialog');
-		var stopAccelerometer = false;
-
 		function onDeviceReady() {
-		    // vibrate
-		    //navigator.notification.vibrate(2000);
-
-		    // beep
-		    //navigator.notification.beep(2);
-
-		    // get battery status
-			
 			// check battery
-		    //window.addEventListener("batterystatus", function() {
-			//	alert("Battery Status - Level: " + info.level + " isPlugged: " + info.isPlugged);
-			//}, function(e) { alert(e); });
-		}
-		
-		 // Start watching the acceleration
-		function startWatch() {
-		    watchID = navigator.accelerometer.watchAcceleration(
-		        //success handler
-		        function (acceleration) {
-					alert(acceleration);
-		        },
-		        // error handler
-		        function () {
-		            // do nothing
-		        },
-		        // options
-		        {
-		            // Update acceleration every 3 seconds
-		            frequency: 3000
-		        });
-		}
-
-		 // Stop watching the acceleration
-		 //
-		function stopWatch() {
-		    if (watchID) {
-		        navigator.accelerometer.clearWatch(watchID);
-		        watchID = null;
-		    } else {
-				startWatch();
-			}
-		}
-
-		// take a photo
-		function takePhoto() {
-			alert('Attempt to take photo');
-			navigator.camera.getPicture( function(data) {
-				alert('took a photo!');
-				var image = document.getElementById("photo");
-				image.src = data;
-			}, function(e) { alert(e); }, 
-			{ quality: 50 } );
-		}
-		
-		function rotatePhoto(d){
-			$({deg: 0}).animate({deg: d}, {
-				step: function(now, fx){
-					$("img").css({
-						 transform: "rotate(" + now + "deg)"
-					});
-				}
-			});
-		}
-
-		
+			window.addEventListener("batterystatus", function() {
+				alert("Battery Status - Level: " + info.level + " isPlugged: " + info.isPlugged);
+			}, function(e) { alert(e); });
+		}	
 		function go() {
 		    document.addEventListener("deviceready", onDeviceReady, false);
 		}
@@ -85,11 +17,7 @@
 		img { width: 100%;}
 	</style>
 </head>
-
 <body onload="go()">
-<button onclick="stopWatch()">Toggle Acceleration Monitoring</button>
-<button onclick="takePhoto()">Take Photo</button>
-<button onclick="rotatePhoto(360)">Spin Photo</button>
-<img id="photo" src="" />
 </body>
 </html>
+
