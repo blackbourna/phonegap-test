@@ -11,7 +11,7 @@
 			watchID = navigator.accelerometer.watchAcceleration(
 			//success handler
 			function (acceleration) {
-				alert(acceleration);
+				alert("x: "+ acceleration.x + " y:" + acceleration.y);
 			},
 			// error handler
 			function () {
